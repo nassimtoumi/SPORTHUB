@@ -31,7 +31,7 @@
 						
 							<a href="#"><i class="fa fa-user-circle"></i><?php echo $_SESSION['name']; ?> <i class="fa fa-caret-down"></i></a>
 							<ul>
-								<li><a  href="index-2.html">Edit Profile</a></li>
+								<li><a  href="Edit.php">Edit Profile</a></li>
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						
@@ -41,8 +41,8 @@
 						} else {
 							?> 
 						 
-						<li><a  href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a></li>
-						<li><a  href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign up</a></li>
+						<li><a  href="signin.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Signin</a></li>
+						<li><a  href="signup.php"><i class="fa fa-user-plus" aria-hidden="true"></i>Signup</a></li>
 						<?php
 						}
 						?>

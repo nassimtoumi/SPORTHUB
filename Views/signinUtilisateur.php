@@ -19,6 +19,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
                 $user_username = $key['username'];
                 $user_id = $key['id'];
                 $user_verified = $key['verified'];
+                $user_email = $key['email'];
+
 
 
                 
@@ -28,7 +30,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
             $_SESSION['name']=$user_username;
             $_SESSION['id']=$user_id;
             $_SESSION['verified']=$user_verified;
-
+            $_SESSION['email']=$user_email;
             header('Location: index.php');
         }else {
             header('Location: Signin.php?erreur=2');

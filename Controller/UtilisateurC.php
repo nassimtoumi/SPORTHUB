@@ -39,6 +39,23 @@
 					'password' => $Utilisateur->getPassword()
 						
 		}*/
+		function modifierUtilisateur($Utilisateur){
+			$sql="UPDATE users SET email = '$email',
+			password = '$password'
+			WHERE user_id = '$id'";
+			$db = config::getConnexion();
+			try{
+				$query = $db->prepare($sql);
+			
+				$query->execute([
+					'email' => $_SESSION['email'],
+					'password' => $_SESSION['password']
+				]);			
+			}
+			catch (Exception $e){
+				echo 'Erreur: '.$e->getMessage();
+			}			
+		}
 		function verifierUtilisateur($id)//updated
         {
             try {

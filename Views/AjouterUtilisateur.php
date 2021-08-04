@@ -9,6 +9,19 @@ $email = $_POST['Email'];
 $password = $_POST['password'];
 $user = new Utilisateur($username,$email,$password);
 $Utilisateur = new UtilisateurC();
+    $sql="SELECT * FROM Utilisateur WHERE username=:username OR email=:email";
+    $db= config::getConnexion();
+    $query= $db->prepare($sql);
+    $query->execute([
+        'username' => $username,
+		'email' => $email
+    ]);
+    $account = $query->fetchAll(PDO::FETCH_ASSOC);
+if (count($account)!=0) {
+    header('Location: Signup.php?erreur=1');
+}else {
+   
+
 $Utilisateur->ajouterUtilisateur($user);
 $_SESSION['username']=$username;
 $_SESSION['email']=$email;
@@ -63,5 +76,5 @@ if(!$mail->send()) {
 
 
 header('Location: index.php');
-
+}
 ?>

@@ -66,6 +66,15 @@
 						<input class="btn" type="submit" value="sign in">
 					</div>	
 					</form>
+					<?php
+					if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if ($err==1) {
+						echo "<p style='color:red'>username ou email existe deja</p>";
+					}
+				}
+					?>
+					
 				</div>
 				
 			</div>

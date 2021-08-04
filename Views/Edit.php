@@ -60,7 +60,10 @@ if (!isset($_SESSION['id'])) {
 								<input type="password" name="password2" placeholder="Confirm new password" required>
 							</li>
 						</ul>
-						<input class="btn" type="submit" value="sign in">
+						<input class="btn" type="submit" value="Edit">
+						<br></br>
+						
+						<button class="btn" type="button"><a href= "supprimerUtilisateur.php?id=<?php echo $_SESSION['id'] ?>">Delete account</a> </button>				
 					</div>	
 					<?php
 					if(isset($_GET['erreur'])){

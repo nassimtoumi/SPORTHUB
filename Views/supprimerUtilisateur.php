@@ -14,6 +14,6 @@ if (isset($_GET['id'])) {
 }else {
     header('Location:index.php');
 }
+//?>
 ?>
 
-supprimerUtilisateur.php?id=<?php echo $_SESSION['id']?>

@@ -339,7 +339,7 @@ header:after {
   left: 0;
   transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s; }
 
-.nav-list > li {
+  .nav-list > li {
   border: none; }
   .nav-list > li > a {
     font-size: 14px;
@@ -354,7 +354,6 @@ header:after {
     display: block;
     position: relative; }
     .nav-list li a {
-      position: relative;
       text-transform: uppercase;
       text-decoration: none;
       display: flex;
@@ -373,6 +372,59 @@ header:after {
       .nav-list li.menu-active a i {
         color: #f23849; }
     .nav-list li.dropdown ul {
+      position:relative;z-index:10;
+      min-width: 100%;
+      background: #272a31;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+      display: none;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 0 !important;
+      padding-right: 0 !important; }
+      .nav-list li.dropdown ul li {
+        text-align: left; }
+        .nav-list li.dropdown ul li a {
+          font-size: 12px;
+          padding: 5px 15px 5px 25px; }
+          .nav-list li.dropdown ul li a:hover {
+            color: #f23849; }
+        .nav-list li.dropdown ul li.active a {
+          color: #f23849; }
+.nav-list > li {
+  border: none; }
+  .nav-list > li > a {
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 15px; }
+
+.nav-list {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 100%; }
+  .nav-list li {
+    display: block;
+    position: relative; }
+    .nav-list li a {
+      
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Righteous", sans-serif;
+      transition: all 0.3s ease;
+      color: #fff; }
+      .nav-list li a:hover {
+        color: #f23849; }
+      .nav-list li a i {
+        margin-right: 10px;
+        margin-left: 5px; }
+    .nav-list li.menu-active a {
+      color: #f23849; }
+      .nav-list li.menu-active a i {
+        color: #f23849; }
+    .nav-list li.dropdown ul {
+      position:relative;z-index:10;
       min-width: 100%;
       background: #272a31;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
@@ -490,7 +542,7 @@ header:after {
 
 /*-------------------- TOP PANEL --------------------*/
 .top-panel {
-  padding: 5px 0; }
+  padding: 10px 0; }
   .top-panel .container {
     display: flex;
     justify-content: space-between;
@@ -498,7 +550,8 @@ header:after {
 
 .header-right,
 .header-right ul {
-  margin-left: 20px;
+  margin-right: 20px;
+ 
 }
 .header-left {
   width: calc(50% - 15px); }

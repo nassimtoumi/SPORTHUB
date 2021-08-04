@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<?php include 'includes/head.php'?>
+<?php 
+session_start();
+include 'includes/head.php'?>
 <body id="home">
 	<!--================ PRELOADER ================-->
 	<div class="preloader-cover">

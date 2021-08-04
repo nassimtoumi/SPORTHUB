@@ -17,15 +17,35 @@
 
 						<!--Visible Before Login-->
 		
+						
 						<li><form class="search-form">
 							<input type="search" class="search-form__field" placeholder="Search" value="" name="s">
 							<button type="submit" class="search-form__submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-						</form></li> 
+						</form></li>
+						<!--Visible After Login-->
+						<?php
+						if (isset($_SESSION['id'])) {
+						?>
+						<ul class="nav-list">
+						<li class="dropdown">
+						
+							<a href="#"><i class="fa fa-user-circle"></i><?php echo $_SESSION['name']; ?> <i class="fa fa-caret-down"></i></a>
+							<ul>
+								<li><a  href="index-2.html">Edit Profile</a></li>
+								<li><a href="logout.php">Logout</a></li>
+							</ul>
+						
+						</li>
+					</ul>
+					<?php
+						} else {
+							?> 
+						 
 						<li><a  href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a></li>
 						<li><a  href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign up</a></li>
-		               
-						<!--Visible After Login-->
-						
+						<?php
+						}
+						?>
 						<!--Search-->
 					</ul>
 					<ul class="social-list">
@@ -43,12 +63,34 @@
 					<a href="index.html" class="logo"><img src="assets/img/logosporthub.png" alt="logo"></a>
 				</div>
 				<nav class="nav-menu">
+				<?php
+						if (isset($_SESSION['id'])) {
+				?>	
+				<ul class="nav-list">
+					    <li><a  href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+						<li><a  href="Forum.php"><i class="fa fa-group" aria-hidden="true"></i>Forum</a></li>
+						<li class="dropdown">
+							<a href="#"><i class="fa fa-bars"></i> Category <i class="fa fa-caret-down"></i></a>
+							<ul>
+								<li ><a href="index-2.html">Fitness</a></li>
+								<li><a href="home-fitness.html">yoga</a></li>
+								<li><a href="home-crossfit-lite.html">Méditation</a></li>
+							</ul>
+						</li>
+						<li><a  href="Signup.php"><i class="fa fa-bookmark" aria-hidden="true"></i>Bookmarked</a></li>
+					</ul>
+					<?php
+						} else {
+							?> 
 					<ul class="nav-list">
 						<li><a  href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 						<li><a  href="Forum.php"><i class="fa fa-group" aria-hidden="true"></i>Forum</a></li>
 						<li><a  href="Signin.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a></li>
 						<li><a  href="Signup.php"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign up</a></li>
 					</ul>
+					<?php
+						}
+						?>
 				</nav>
 			</div>
 		</div>

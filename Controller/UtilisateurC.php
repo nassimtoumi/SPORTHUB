@@ -39,22 +39,26 @@
 					'password' => $Utilisateur->getPassword()
 						
 		}*/
-		function modifierUtilisateur($Utilisateur){
-			$sql="UPDATE users SET email = '$email',
-			password = '$password'
-			WHERE user_id = '$id'";
-			$db = config::getConnexion();
-			try{
-				$query = $db->prepare($sql);
-			
+		function modifierUtilisateur($Utilisateur, $id){
+			try {
+				$db = config::getConnexion();
+				$query = $db->prepare(
+					'UPDATE Utilisateur SET 
+						 email = :email,
+						password = :password
+					WHERE id = :id'
+				);
 				$query->execute([
-					'email' => $_SESSION['email'],
-					'password' => $_SESSION['password']
-				]);			
+					
+					
+					'email' => $Utilisateur->getEmail(),
+					'password' => $Utilisateur->getPassword(),
+					'id' => $id
+				]);
+				echo $query->rowCount() . " records UPDATED successfully <br>";
+			} catch (PDOException $e) {
+				$e->getMessage();
 			}
-			catch (Exception $e){
-				echo 'Erreur: '.$e->getMessage();
-			}			
 		}
 		function verifierUtilisateur($id)//updated
         {
@@ -74,6 +78,19 @@
                 $e->getMessage();
             }
         }
+
+		function supprimerUtilisateur($id){
+			$sql="DELETE FROM Utilisateur WHERE id= :id";
+			$db = config::getConnexion();
+			$req=$db->prepare($sql);
+			$req->bindValue(':id',$id);
+			try{
+				$req->execute();
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}
+		}
     }
 
    

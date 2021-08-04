@@ -1,16 +1,25 @@
 <?php
-require '../Model/Utilisateur.php';
-require '../Controller/UtilisateurC.php';
-//require '../config.php';
-session_start();
+	include "../controller/UtilisateurC.php";
+	include_once '../Model/Utilisateur.php';
+    session_start();
+if ( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password2'])) {
+    if ($_POST['password'] == $_POST['password2']) {
+        
 
-$email = $_POST['Email'];
-$password = $_POST['password'];
-$user = new Utilisateur($username,$email,$password);
-$Utilisateur = new UtilisateurC();
-$Utilisateur->modifierUtilisateur($user);
-if(isset($_POST['username'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-header('Location: Edit.php');
-?>
+        $utilisateur = new Utilisateur($_SESSION['name'],$_POST['email'],$_POST['password']) ;
+        $utilisateurC = new UtilisateurC();
+        $utilisateurC->modifierUtilisateur($utilisateur,$_GET['id']);
+        
+        $_SESSION['email']=$_POST['email'];
+        header('Location: Edit.php?erreur=0');
+    }else {
+        header('Location: Edit.php?erreur=1');
+    }
+    
+    
+}else {
+    header('Location: Edit.php');
+}
+    
+
+    ?>

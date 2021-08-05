@@ -7,7 +7,7 @@ session_start();
 $username = $_POST['Username'];
 $email = $_POST['Email'];
 $password = $_POST['password'];
-$user = new Utilisateur($username,$email,$password);
+$user =  new Utilisateur($username,$email,$password);
 $Utilisateur = new UtilisateurC();
     $sql="SELECT * FROM Utilisateur WHERE username=:username OR email=:email";
     $db= config::getConnexion();

@@ -60,7 +60,7 @@
 		<div class="header-menu">
 			<div class="container">
 				<div class="header-logo">
-					<a href="index.html" class="logo"><img src="assets/img/logosporthub.png" alt="logo"></a>
+					<a href="index.php" class="logo"><img src="assets/img/logosporthub.png" alt="logo"></a>
 				</div>
 				<nav class="nav-menu">
 				<?php
@@ -72,9 +72,9 @@
 						<li class="dropdown">
 							<a href="#"><i class="fa fa-bars"></i> Category <i class="fa fa-caret-down"></i></a>
 							<ul>
-								<li ><a href="index-2.html">Fitness</a></li>
-								<li><a href="home-fitness.html">yoga</a></li>
-								<li><a href="home-crossfit-lite.html">Méditation</a></li>
+								<li ><a href="Fitness.php">Fitness</a></li>
+								<li><a href="yoga.php">yoga</a></li>
+								<li><a href="meditation.php">Méditation</a></li>
 							</ul>
 						</li>
 						<li><a  href="Signup.php"><i class="fa fa-bookmark" aria-hidden="true"></i>Bookmarked</a></li>

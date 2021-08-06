@@ -1,7 +1,12 @@
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
-	<?php include 'includes/head.php'?>
+	<?php
+	 session_start();
+	 include 'includes/head.php'?>
 
 <body id="home">
 	<!--================ PRELOADER ================-->
@@ -95,7 +100,7 @@
 											<div class="review-content">
 												<h6 class="name">Richard Spencer </h6>
 												<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>Dec 27, 2019</div>
-												<p class="review-comment">Non odio euismod lacinia at quis. Auctor augue mauris augue neque gravida. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar. In tellus integer feugiat scelerisque varius morbi enim.</p>
+												<p class="review-comment">n tellus integer feugiat scelerisque varius morbi enim.</p>
 												<a href="#" class="review-btn"><i class="fa fa-thumbs-up" aria-hidden="true"></i> like</a>
 										<a href="#" class="review-btn"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report</a>
 										<a href="#" class="review-btn"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
@@ -107,27 +112,13 @@
 						</ul>
 						<div class="reviews-form">
 							<h2 class="title">Leave a Comment</h2>
-							<form action="https://fitmax-html.rovadex.com/">
+							<form action="ajouterReply.php"  method="POST" >
 								<ul class="form-cover">
-									<li class="inp-name">
-										<label>Name * (required)</label>
-										<input type="text" name="your-name">
-									</li>
-									<li class="inp-email">
-										<label>E-mail * (required)</label>
-										<input type="email" name="your-email">
-									</li>
 									<li class="inp-text">
 										<label>Message * (required)</label>
-										<textarea name="your-text"></textarea>
+										<textarea name="text" required ></textarea>
 									</li>
 								</ul>
-								<div class="checkbox-wrap">
-									<div class="checkbox-cover">
-										<input type="checkbox">
-										<p>By using this form you agree with the storage and handling of your data by this website.</p>
-									</div>
-								</div>
 								<div class="btn-form-cover">
 									<button type="submit" class="btn">send comment</button>
 								</div>

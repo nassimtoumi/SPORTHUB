@@ -42,7 +42,7 @@ include 'includes/head.php'?>
 		<div class="container">
 			<h1 class="title">Forum</h1>
 			<ul class="breadcrambs">
-				<li><a href="index-2.html">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li>Forum</li>
 			</ul>
 		</div>

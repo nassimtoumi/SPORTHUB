@@ -682,8 +682,8 @@ unset($_SESSION['email']);
 					<h3>Contact us</h3>
 					<ul class="footer-cont">
 						<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+216 29 269 424">29 269 424</a></li>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:crossFit@gmail.com">nassim.toumi@esprit.tn</a></li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="contacts.html">Aryanah,Tunis</a></li>
+						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="nassim.toumi@esprit.tn">nassim.toumi@esprit.tn</a></li>
+						<li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="#col-sm-6 col-lg-3 footer-item">Aryanah,Tunis</a></li>
 					</ul>
 				</div>
 				

@@ -13,9 +13,7 @@
 			
 				$query->execute([
 					'username_reply' => $reply->getUsername_reply(),
-					'text_reply' => $reply->getText_reply(),
-					
-
+					'text_reply' => $reply->getText_reply()
 				]);			
 			}
 			catch (Exception $e){

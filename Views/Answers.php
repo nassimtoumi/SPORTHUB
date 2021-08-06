@@ -112,17 +112,7 @@
 						</ul>
 						<div class="reviews-form">
 							<h2 class="title">Leave a Comment</h2>
-							<form action="ajouterReply.php"  method="POST" >
-								<ul class="form-cover">
-									<li class="inp-text">
-										<label>Message * (required)</label>
-										<textarea name="text" required ></textarea>
-									</li>
-								</ul>
-								<div class="btn-form-cover">
-									<button type="submit" class="btn">send comment</button>
-								</div>
-							</form>
+							 
 						</div>
 					</div>
 				</div>

@@ -122,10 +122,10 @@ $listreplys=$replyC->afficherReply();
 								<div class="review-item">
 									<div class="review-avatar"><img src="assets/img/comments-photo-1.png" alt="img"></div>
 									<div class="review-content">
-										<h6 class="name">Ella Bryan</h6>
-										<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>Dec 26, 2019</div>
-										<p class="review-comment">Non odio euismod lacinia at quis. Auctor augue mauris augue neque gravida. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar. In tellus integer feugiat scelerisque varius morbi enim.</p>
-										<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $postid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $postid; ?>"><?php echo $total_likes; ?></span>&nbsp;</span>
+										<h6 class="name"><?php echo $reply['username_reply'] ?></h6>
+										<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $post['date_reply'] ?></div>
+										<p class="review-comment"><?php echo $post['text_reply'] ?></p>
+										<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $replyid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $replyid; ?>"><?php echo $total_likes1; ?></span>&nbsp;</span>
 										<a href="#" class="review-btn"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report</a>
 										<a href="#" class="review-btn"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
 									</div>

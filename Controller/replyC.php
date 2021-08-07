@@ -27,8 +27,8 @@
 			$sql="SELECT * FROM reply ORDER BY id_reply DESC LIMIT 3 ";
 			$db = config::getConnexion();
 			try{
-				$liste = $db->query($sql);
-				return $liste;
+				$liste1 = $db->query($sql);
+				return $liste1;
 			}
 			catch (Exception $e){
 				die('Erreur: '.$e->getMessage());

@@ -4,6 +4,7 @@ session_start();
 if(isset($_POST['username']) && isset($_POST['password']))
 {   // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
+    //// salut
     $username =htmlspecialchars($_POST['username']); 
     $password = htmlspecialchars($_POST['password']);
    // signin(usename,password)

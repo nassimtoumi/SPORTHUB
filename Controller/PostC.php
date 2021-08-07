@@ -26,7 +26,31 @@
 
 		function afficherPosts(){
 			
-			$sql="SELECT * FROM post ORDER BY id_post DESC LIMIT 3 ";
+			$sql="SELECT * FROM post ORDER BY id_post DESC LIMIT 5 ";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
+		function afficherPosts1(){
+			
+			$sql="SELECT * FROM post WHERE category_post='fitness' ORDER BY id_post DESC LIMIT 5";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
+		function afficherPosts2(){
+			
+			$sql="SELECT * FROM post WHERE category_post='yoga' ORDER BY id_post DESC LIMIT 5 ";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);
@@ -37,7 +61,20 @@
 			}	
 		}
 	
-    }
+	
+		function afficherPosts3(){
+			
+			$sql="SELECT * FROM post WHERE category_post='meditation' ORDER BY id_post DESC LIMIT 5 ";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
+	}
 
    
 		

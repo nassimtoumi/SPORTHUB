@@ -26,9 +26,9 @@
 							<li class="widget widget-categories">
 								<h3 class="title">Categories</h3>
 								<ul>
-									<li><a href="#">Fitness</a></li>
-									<li><a href="#">Yoga</a></li>
-									<li><a href="#">Méditation</a></li>
+									<li><a href="Fitness.php">Fitness</a></li>
+									<li><a href="Yoga.php">Yoga</a></li>
+									<li><a href="Meditation.php">Méditation</a></li>
 								</ul>
 							</li>
 							<!--======= WIDGET-CATEGORIES END =======-->

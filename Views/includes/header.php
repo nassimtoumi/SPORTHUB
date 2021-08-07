@@ -77,7 +77,7 @@
 								<li><a href="meditation.php">Méditation</a></li>
 							</ul>
 						</li>
-						<li><a  href="Signup.php"><i class="fa fa-bookmark" aria-hidden="true"></i>Bookmarked</a></li>
+						<li><a  href="Bookmarked.php"><i class="fa fa-bookmark" aria-hidden="true"></i>Bookmarked</a></li>
 					</ul>
 					<?php
 						} else {

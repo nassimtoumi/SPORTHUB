@@ -53,27 +53,27 @@
 							</li>
 							<div class="checkbox-wrap">
 								<div class="checkbox-cover">
-									<input type="radio" name="sexe" required>
+									<input type="radio" name="homme" required>
 									<p>Homme</p>
 								</div>
 								<div class="checkbox-cover">
-									<input type="radio" name="sexe" required>
+									<input type="radio" name="femme" required>
 									<p>Femme</p>
 								</div>
 							</div>
-
+							<?php
+					if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if ($err==1) {
+						echo "<p style='color:red'> ♦ Username or Email already exsit ! ♦ </p>";
+					}
+				}
+					?>
 						</ul>
 						<input class="btn" type="submit" value="sign in">
 					</div>	
 					</form>
-					<?php
-					if(isset($_GET['erreur'])){
-                    $err = $_GET['erreur'];
-                    if ($err==1) {
-						echo "<p style='color:red'>username ou email existe deja</p>";
-					}
-				}
-					?>
+				
 					
 				</div>
 				

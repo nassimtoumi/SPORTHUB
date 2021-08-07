@@ -26,7 +26,7 @@
 
 		function afficherPosts(){
 			
-			$sql="SELECT * FROM post ORDER BY id_post DESC LIMIT 5 ";
+			$sql="SELECT * FROM post ORDER BY id_post DESC LIMIT 30 ";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);

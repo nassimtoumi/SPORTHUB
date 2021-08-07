@@ -18,7 +18,7 @@
 		<div class="container">
 			<h1 class="title">Sign in</h1>
 			<ul class="breadcrambs">
-				<li><a href="index.html">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li>Sign in</li>
 			</ul>
 		</div>
@@ -47,19 +47,20 @@
 								<input type="password" name="password" placeholder="password" required>
 							</li>
 						</ul>
-						<input class="btn" type="submit" value="sign in">
-						<!--<a class="btn" ><input type="submit" value="sign in"></a>-->
-					</div>
-					<?php
+						<?php
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
                     if($err==1){
-                        echo "<p style='color:red'>Nom d'utilisateur n'existe pas</p>";
+                        echo "<p style='color:red'> ♦ Username dosen't exist ! ♦ </p>";
 					}elseif ($err==2) {
-						echo "<p style='color:red'>mot de passe incorrecte</p>";
+						echo "<p style='color:red'> ♦ Incorrect password ! ♦ </p>";
 					}
                 }
                 ?>	
+						<input href="#container" class="btn" type="submit" value="signin">
+						<!--<a class="btn" ><input type="submit" value="sign in"></a>-->
+					</div>
+				
 					</form>
 					
 				</div>

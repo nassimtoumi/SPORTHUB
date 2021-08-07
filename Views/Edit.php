@@ -59,22 +59,23 @@ if (!isset($_SESSION['id'])) {
 								<label>Confirm new password </label>
 								<input type="password" name="password2" placeholder="Confirm new password" required>
 							</li>
+							<?php
+					if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==0){
+                        echo "<script>alert('profile updated');</script>";
+					}elseif ($err==1) {
+						echo "<p style='color:red'>  ♦      Passwords dosen't match ! ♦ </p>";
+					}
+                }
+				?>
 						</ul>
 						<input class="btn" type="submit" value="Edit">
 						<br></br>
 						
 						<button class="btn" type="button"><a href= "supprimerUtilisateur.php?id=<?php echo $_SESSION['id'] ?>">Delete account</a> </button>				
 					</div>	
-					<?php
-					if(isset($_GET['erreur'])){
-                    $err = $_GET['erreur'];
-                    if($err==0){
-                        echo "<script>alert('profile updated');</script>";
-					}elseif ($err==1) {
-						echo "<p style='color:red'>passwords dosen't match</p>";
-					}
-                }
-				?>
+				
 					</form>
 				</div>
 				

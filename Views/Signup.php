@@ -53,11 +53,11 @@
 							</li>
 							<div class="checkbox-wrap">
 								<div class="checkbox-cover">
-									<input type="radio" name="homme" required>
+									<input type="radio" name="sexe" required>
 									<p>Homme</p>
 								</div>
 								<div class="checkbox-cover">
-									<input type="radio" name="femme" required>
+									<input type="radio" name="sexe" required>
 									<p>Femme</p>
 								</div>
 							</div>

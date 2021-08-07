@@ -5,7 +5,6 @@ session_start();
 $userid = $_SESSION['id'];
 $postid = $_POST['postid'];
 $type = $_POST['type'];
-
 //$userid = 60;
 //$postid = 1;
 //$type = 0;

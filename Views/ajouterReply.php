@@ -6,7 +6,8 @@ if (isset($_POST['text'])) {
     # code...
     $username_reply=$_SESSION['name'];
     $text_reply=$_POST['text'];
-    $reply = new reply($username_reply,$text_reply);
+    $id_post = $_GET['postid'];
+    $reply = new reply($username_reply,$text_reply ,$id_post );
     $replyC = new replyC();
     $replyC->ajouterReply($reply);
     header('Location: Answers.php');

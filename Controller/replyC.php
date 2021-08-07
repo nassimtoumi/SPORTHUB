@@ -5,15 +5,16 @@
 	class replyC {
 		
 		function ajouterReply($reply){
-			$sql="INSERT INTO reply ( username_reply, text_reply ) 
-			VALUES (:username_reply,:text_reply)";
+			$sql="INSERT INTO reply ( username_reply, text_reply, id_post ) 
+			VALUES (:username_reply,:text_reply,:id_post)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
 			
 				$query->execute([
 					'username_reply' => $reply->getUsername_reply(),
-					'text_reply' => $reply->getText_reply()
+					'text_reply' => $reply->getText_reply(),
+					'id_post'=>$reply->getId_post()
 				]);			
 			}
 			catch (Exception $e){

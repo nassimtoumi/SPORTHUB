@@ -3,7 +3,6 @@ require '../Controller/replyC.php';
 //require_once '../config.php';
 $replyC = new replyC();
 $listreplys=$replyC->afficherReply($_GET['postid']);
-$namepost =$post['username_post'];
 ?>
 
 
@@ -76,10 +75,10 @@ $namepost =$post['username_post'];
 					</div>
 					<!--=============== AUTOR-COVER ===============-->
 					<div class="autor-cover">
-						<img src="assets/img/autor-img.png" alt="img">
+						<img src="assets/img/user.png" alt="img">
 						<div class="autor-content">
 							<div class="name"><?php echo $_SESSION['name']?></div>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+							<p><?php echo $_SESSION['email']?></p>
 						</div>
 					</div>
 					<!--============= AUTOR-COVER END =============-->
@@ -98,7 +97,7 @@ $namepost =$post['username_post'];
 				
 							<li class="item"> 
 								<div class="review-item">
-									<div class="review-avatar"><img src="assets/img/comments-photo-1.png" alt="img"></div>
+									<div class="review-avatar"><img src="assets/img/user.png" alt="img"></div>
 									<div class="review-content">
 										<h6 class="name"><?php echo $reply['username_reply'] ?></h6>
 										<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $reply['date_reply'] ?></div>

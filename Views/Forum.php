@@ -105,9 +105,6 @@ include 'includes/head.php'?>
 
 
 
-
-
-
 						<section class="s-news">
 						<?php
 						foreach ($listPosts as $post) {
@@ -166,7 +163,7 @@ include 'includes/head.php'?>
 						}
 						?>
 							</div>
-							<h2 class="title"><a href="Answers.php"><?php echo $post['sujet_post'] ?></a></h2>
+							<h2 class="title"><a href="Answers.php"><?php echo $postid ?></a></h2>
 							<div class="text">
 								<p><?php echo $post['text_post'] ?></p>
 							</div>
@@ -175,7 +172,7 @@ include 'includes/head.php'?>
 							<div class="meta">
 								<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $postid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $postid;?>"><?php echo $total_likes; ?></span>&nbsp;</span>
 								<span class="post-comment"><i class="fa fa-thumbs-down" aria-hidden="true"></i><input type="button" value="Unlike" id="unlike_<?php echo $postid; ?>" class="unlike" style="<?php if($type == 0){ echo "color: #f23849; "; } ?>" />&nbsp;<span id="unlikes_<?php echo $postid; ?>"><?php echo $total_unlikes; ?></span></span>
-								<span class="post-comment"><i class="fa fa-reply" aria-hidden="true"></i><input type="button" onclick="hideshow(<?php echo $postid ?>)" value="Reply" id="like_<?php echo $postid; ?>" class="like" />&nbsp;</span>
+								<span class="post-comment"><i class="fa fa-reply" aria-hidden="true"></i><input type="button" onclick="hideshow(<?php echo $postid ?>)" value="Reply" id="reply<?php echo $postid; ?>" class="bookmark" />&nbsp;</span>
 								<span class="post-comment"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><a href="#">Report  <?php echo $post['nb_reported'] ?> </a></span>
 								
 								<?php
@@ -191,14 +188,15 @@ include 'includes/head.php'?>
 								?>
 								
 							</div>
+							<form action="ajouterReply.php"  method="POST" >
 							<div id="<?php echo $postid ?>" style="display: none;" >
-							<form action="ajouterReply.php?postid=<?php echo $_GET['postid']?>"  method="POST" >
+							
         <textarea class="form-control" id="replyComment" placeholder="Add Public Comment" cols="30" rows="2"></textarea><br>
         <button style="float:right" class="btn-primary btn" type="submit" id="addReply">Add Reply</button>
         <button style="float:right; margin-right: 20px;"  class="btn-default btn" onclick="$('.replyRow').hide();">Close</button>
 							</form>
 						</div>
-							<a href="Answers.php?postid=<?php echo $postid ?>" class="btn"><span>read more</span></a>
+							<a href="Answers.php?postid=<?php  ?>" class="btn"><span>read more</span></a>
 						</div>
 								<?php
 					}					

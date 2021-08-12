@@ -74,9 +74,39 @@
 				die('Erreur: '.$e->getMessage());
 			}	
 		}
+
+		function supprimerPost($id_post){
+			$sql="DELETE FROM post WHERE id_post= :id_post";
+			$db = config::getConnexion();
+			$req=$db->prepare($sql);
+			$req->bindValue(':id_post',$id_post);
+			try{
+				$req->execute();
+			}
+			catch (Exception $e){
+				echo 'Erreur: '.$e->getMessage();
+			}			
+		}
+
+		function modifierPost($text_post, $id_post){
+			try {
+				$db = config::getConnexion();
+				$query = $db->prepare(
+					'UPDATE Utilisateur SET 
+						 text_post = :text_post,
+					WHERE id_post = :id_post'
+				);
+				$query->execute([
+					'text_post' => $text_post->getText_post(),
+					'id_post' => $id_post
+				]);
+				echo $query->rowCount() . " records UPDATED successfully <br>";
+			} catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
+
+
+
 	}
-
-   
-		
-
 ?>

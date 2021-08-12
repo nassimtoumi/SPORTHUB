@@ -10,7 +10,8 @@ if (isset($_POST['text'])) {
     $reply = new reply($username_reply,$text_reply ,$id_post );
     $replyC = new replyC();
     $replyC->ajouterReply($reply);
-    header('Location: Answers.php');
+ //  echo 'ok';
+     header("Location: Answers.php?postid=$id_post");
 }else {
     echo 'chyy';
 }

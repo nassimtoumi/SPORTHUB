@@ -3,8 +3,21 @@ require '../Controller/PostC.php';
 //require_once '../config.php';
 $postC = new PostC();
 $listPosts=$postC->afficherPosts();
+
+
 ?>
 
+<script>
+	function hideshow($id_post) {
+  var x = document.getElementById($id_post);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+	
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -33,6 +46,7 @@ include 'includes/head.php'?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 		<script src="script.js" type="text/javascript"></script>
+		<script src="sc.js" type="text/javascript"></script>
 <?php include 'includes/header.php'?>
 	<!-- =============== HEADER END =============== -->
 
@@ -98,6 +112,7 @@ include 'includes/head.php'?>
 						<?php
 						foreach ($listPosts as $post) {
 							$postid = $post['id_post'];
+							$namepost =$post['username_post'];
 							$type = -1;
 							$userid = $_SESSION['id'];
 							$db1 = config::getConnexion();
@@ -125,6 +140,13 @@ include 'includes/head.php'?>
 							$query->execute();							
 							$unlike_row = $query->fetch();
 							$total_unlikes = $unlike_row['cntUnlikes'];
+
+							//get bookmarks
+							$sql="SELECT * FROM bookmark WHERE id_post=$postid AND id_username=$userid ";
+							$db= config::getConnexion();
+							$query= $db->prepare($sql);
+							$query->execute();
+							$bookmark = $query->fetchAll(PDO::FETCH_ASSOC);
 						?>
 						
 						<div class="post-content">
@@ -135,6 +157,14 @@ include 'includes/head.php'?>
 								<span class="post-by"><i class="fa fa-user" aria-hidden="true"></i><a href="#">By <?php echo $post['username_post'] ?></a></span>
 								<span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $post['date_post'] ?></span>
 								<span class="post-category"><i class="fa fa-tag" aria-hidden="true"></i><a href="#"><?php echo $post['category_post'] ?></a></span>
+								<?php
+						if ($_SESSION['name']==$post['username_post']) {
+						?>
+								<span class="post-category"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="modifierPost.php">Edit</a></span>
+								<span class="post-category"><i class="fa fa-trash" aria-hidden="true"></i><a href="supprimerPost.php?id=<?php echo $postid ?>">Delete</a></span> 
+								<?php
+						}
+						?>
 							</div>
 							<h2 class="title"><a href="Answers.php"><?php echo $post['sujet_post'] ?></a></h2>
 							<div class="text">
@@ -143,17 +173,43 @@ include 'includes/head.php'?>
 						</div>
 						<div class="post-footer">
 							<div class="meta">
-								<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $postid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $postid; ?>"><?php echo $total_likes; ?></span>&nbsp;</span>
+								<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $postid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $postid;?>"><?php echo $total_likes; ?></span>&nbsp;</span>
 								<span class="post-comment"><i class="fa fa-thumbs-down" aria-hidden="true"></i><input type="button" value="Unlike" id="unlike_<?php echo $postid; ?>" class="unlike" style="<?php if($type == 0){ echo "color: #f23849; "; } ?>" />&nbsp;<span id="unlikes_<?php echo $postid; ?>"><?php echo $total_unlikes; ?></span></span>
-								<span class="post-comment"><i class="fa fa-comment" aria-hidden="true"></i><a href="#">2 Comments(s)</a></span>
+								<span class="post-comment"><i class="fa fa-reply" aria-hidden="true"></i><input type="button" onclick="hideshow(<?php echo $postid ?>)" value="Reply" id="like_<?php echo $postid; ?>" class="like" />&nbsp;</span>
 								<span class="post-comment"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><a href="#">Report  <?php echo $post['nb_reported'] ?> </a></span>
-								<span class="post-comment"><i class="fa fa-bookmark" aria-hidden="true"></i><a href="#">Bookmark</a></span>
+								
+								<?php
+								if (count($bookmark)==0) { ?>
+									<span class="post-comment"><i class="fa fa-bookmark-o" aria-hidden="true"></i><input type="button" value="Bookmark" id="bookmark_<?php echo $postid; ?>_<?php echo $userid;?>" class="bookmark" style="<?php if($type == 1){ echo "color: #fff;"; } ?>" />&nbsp;</span>
+									
+									<?php
+								}else {
+									?>
+								<span class="post-comment"><i class="fa fa-bookmark" aria-hidden="true"></i><input type="button" value="Bookmarked" id="bookmarked_<?php echo $postid; ?>_<?php echo $userid;?>" class="bookmark" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;</span>
+								<?php
+								}
+								?>
+								
 							</div>
+							<div id="<?php echo $postid ?>" style="display: none;" >
+							<form action="ajouterReply.php?postid=<?php echo $_GET['postid']?>"  method="POST" >
+        <textarea class="form-control" id="replyComment" placeholder="Add Public Comment" cols="30" rows="2"></textarea><br>
+        <button style="float:right" class="btn-primary btn" type="submit" id="addReply">Add Reply</button>
+        <button style="float:right; margin-right: 20px;"  class="btn-default btn" onclick="$('.replyRow').hide();">Close</button>
+							</form>
+						</div>
 							<a href="Answers.php?postid=<?php echo $postid ?>" class="btn"><span>read more</span></a>
 						</div>
 								<?php
 					}					
 						?>
+						<div class="row replyRow" style="display:none">
+    <div class="col-md-12">
+        <textarea class="form-control" id="replyComment" placeholder="Add Public Comment" cols="30" rows="2"></textarea><br>
+        <button style="float:right" class="btn-primary btn" onclick="isReply = true;" id="addReply">Add Reply</button>
+        <button style="float:right" class="btn-default btn" onclick="$('.replyRow').hide();">Close</button>
+    </div>
+</div>
 					</div>
 					
 					<div class="post-item-cover">

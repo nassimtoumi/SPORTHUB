@@ -22,9 +22,9 @@
 			}			
 		}
 
-		function afficherReply(){
+		function afficherReply($id_post){
 			
-			$sql="SELECT * FROM reply ORDER BY id_reply DESC LIMIT 3 ";
+			$sql="SELECT * FROM reply WHERE id_post=$id_post ";
 			$db = config::getConnexion();
 			try{
 				$liste1 = $db->query($sql);

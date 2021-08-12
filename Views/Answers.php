@@ -2,7 +2,8 @@
 require '../Controller/replyC.php';
 //require_once '../config.php';
 $replyC = new replyC();
-$listreplys=$replyC->afficherReply();
+$listreplys=$replyC->afficherReply($_GET['postid']);
+$namepost =$post['username_post'];
 ?>
 
 
@@ -77,55 +78,32 @@ $listreplys=$replyC->afficherReply();
 					<div class="autor-cover">
 						<img src="assets/img/autor-img.png" alt="img">
 						<div class="autor-content">
-							<div class="name">Samson Peters</div>
+							<div class="name"><?php echo $_SESSION['name']?></div>
 							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
 						</div>
 					</div>
 					<!--============= AUTOR-COVER END =============-->
-					
-					<div class="reviews">
-					<?php
-						foreach ($listreplys as $reply) {
-							$reolyid = $reply['id_reply'];
-							$type = -1;
-							$userid = $_SESSION['id'];
-							$db11 = config::getConnexion();
-							// Checking user status
-							$sql1 = "SELECT count(*) as cntStatus,type FROM like_unlike WHERE userid=".$userid." and replyid=".$replyid;
-							$queryid1  = $db1->prepare($sql1);
-							$queryid1->execute();
-							$status_row1 = $queryid1->fetch();							
-							$count_status1 = $status_row1['cntStatus'];
-							if($count_status1 > 0){
-								$type1 = $status_row1['type'];
-							}
-
-							// Count post total likes and unlikes
-							$like_query1 = "SELECT COUNT(*) AS cntLikes FROM like_unlike WHERE type=1 and replyid=".$postid;
-							$db21 = config::getConnexion();
-							$query1 = $db21->prepare($like_query1);
-							$query1->execute();							
-							$like_row1 = $query1->fetch();
-							$total_likes1 = $like_row1['cntLikes'];
-		
-							$unlike_query1 = "SELECT COUNT(*) AS cntUnlikes FROM like_unlike WHERE type=0 and replyid=".$postid;
-							$db31 = config::getConnexion();
-							$query1 = $db31->prepare($unlike_query1);
-							$query1->execute();							
-							$unlike_row1 = $query1->fetch();
-							$total_unlikes1 = $unlike_row1['cntUnlikes'];
-						?>
-						
 						<h2 class="title">Comments</h2>
-						<ul class="reviews-list">
-							<li class="item">
+						<div class="reviews">
+							<ul class="reviews-list">
+						<?php
+						foreach ($listreplys as $reply) {
+							$replyid=$reply['id_reply']
+						?>
+					
+				
+					
+						
+						
+				
+							<li class="item"> 
 								<div class="review-item">
 									<div class="review-avatar"><img src="assets/img/comments-photo-1.png" alt="img"></div>
 									<div class="review-content">
 										<h6 class="name"><?php echo $reply['username_reply'] ?></h6>
-										<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $post['date_reply'] ?></div>
-										<p class="review-comment"><?php echo $post['text_reply'] ?></p>
-										<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $replyid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $replyid; ?>"><?php echo $total_likes1; ?></span>&nbsp;</span>
+										<div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $reply['date_reply'] ?></div>
+										<p class="review-comment"><?php echo $reply['text_reply'] ?></p>
+				<!--						<span class="post-comment"><i class="fa fa-thumbs-up" aria-hidden="true"></i><input type="button" value="Like" id="like_<?php echo $replyid; ?>" class="like" style="<?php if($type == 1){ echo "color: #f23849;"; } ?>" />&nbsp;<span id="likes_<?php echo $replyid; ?>"><?php echo $total_likes1; ?></span>&nbsp;</span>-->
 										<a href="#" class="review-btn"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report</a>
 										<a href="#" class="review-btn"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
 									</div>

@@ -33,16 +33,18 @@
     margin-bottom: 15px;
 }
 
-.like,.unlike{
+.like,.unlike,.bookmark{
     border: 0;
     background: none;
     letter-spacing: 1px;
     color: #fff;
 }
 
-.like,.unlike:hover{
+.like,.unlike,.bookmark:hover{
     cursor: pointer;
+    
 }
+
 
 
 /* media query */
